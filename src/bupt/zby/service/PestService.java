@@ -6,5 +6,6 @@ import bupt.zby.entity.PestQuery;
 
 public interface PestService {
 	public Pest queryPestById(int id);
-	public PageBean queryPageBean(int curPage, int pageSize, PestQuery query);
+
+	public PageBean queryPageBean(PestQuery query);
 }

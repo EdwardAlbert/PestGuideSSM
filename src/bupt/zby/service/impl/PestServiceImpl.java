@@ -24,7 +24,9 @@ public class PestServiceImpl implements PestService {
 	}
 
 	@Override
-	public PageBean queryPageBean(int curPage, int pageSize, PestQuery query) {
+	public PageBean queryPageBean(PestQuery query) {
+		int curPage = Integer.parseInt(query.getCurrentPage());
+		int pageSize = Integer.parseInt(query.getPageSize());
 		PageBean bean = new PageBean();
 		bean.setPageSize(pageSize);
 		int count = pestDao.queryCount(query);

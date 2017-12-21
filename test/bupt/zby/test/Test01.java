@@ -38,14 +38,15 @@ public class Test01 {
 		// System.out.println(string);
 		// }
 		PestQuery pestQuery = new PestQuery();
-		pestQuery.setName("虫");
-//		List<Pest> list3 = service.queryData(0, 10, pestQuery);
-//		for (Pest pest : list3) {
-//			System.out.println(pest.getName());
-//		}
-//		System.out.println(service.queryCount(pestQuery));
-		
-		System.out.println(service.queryPageBean(1, 5, pestQuery));
+		// pestQuery.setName("虫");
+		pestQuery.setCategory("甲虫类");
+		List<Pest> list3 = service.queryData(0, 10, pestQuery);
+		for (Pest pest : list3) {
+			System.out.println(pest.getName());
+		}
+		System.out.println(service.queryCount(pestQuery));
+
+		// System.out.println(service.queryPageBean(pestQuery));
 	}
 
 }

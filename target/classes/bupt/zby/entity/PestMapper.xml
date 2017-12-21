@@ -27,11 +27,12 @@
 					jdbcType=VARCHAR}),'%')
 				</if>
 				<if test="pestQuery.family !=null and pestQuery.family != ''">
-					AND name LIKE CONCAT(CONCAT('%',#{pestQuery.family,
+					AND family LIKE CONCAT(CONCAT('%',#{pestQuery.family,
 					jdbcType=VARCHAR}),'%')
 				</if>
 				<if test="pestQuery.category !=null and pestQuery.category != ''">
-					AND name LIKE CONCAT(CONCAT('%',#{pestQuery.category,
+					AND category LIKE
+					CONCAT(CONCAT('%',#{pestQuery.category,
 					jdbcType=VARCHAR}),'%')
 				</if>
 			</if>
@@ -48,11 +49,11 @@
 					jdbcType=VARCHAR}),'%')
 				</if>
 				<if test="query.family !=null and query.family != ''">
-					AND name LIKE CONCAT(CONCAT('%',#{query.family,
+					AND family LIKE CONCAT(CONCAT('%',#{query.family,
 					jdbcType=VARCHAR}),'%')
 				</if>
 				<if test="query.category !=null and query.category != ''">
-					AND name LIKE CONCAT(CONCAT('%',#{query.category,
+					AND category LIKE CONCAT(CONCAT('%',#{query.category,
 					jdbcType=VARCHAR}),'%')
 				</if>
 			</if>
