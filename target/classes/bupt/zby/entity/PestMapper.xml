@@ -5,8 +5,58 @@
 <mapper namespace="bupt.zby.dao.PestDao">
 
 	<!-- id和命名空间用来定位SQL语句，parameterType表示参数的类型，resultMap返回类型 -->
-	<select id="selectPestById" parameterType="Integer" resultType="Pest">
-		select * from pest where id = #{id}
+	<select id="queryPestById" parameterType="Integer" resultType="Pest">
+		SELECT * FROM pest WHERE id = #{id}
+	</select>
+
+	<select id="queryFamilyList" resultType="String">
+		SELECT DISTINCT family
+		FROM pest
+	</select>
+	<select id="queryCategoryList" resultType="String">
+		SELECT DISTINCT
+		category FROM pest
+	</select>
+
+	<select id="queryData" resultType="Pest">
+		SELECT * FROM pest
+		<where>
+			<if test="pestQuery!=null">
+				<if test="pestQuery.name !=null and pestQuery.name != ''">
+					name LIKE CONCAT(CONCAT('%',#{pestQuery.name,
+					jdbcType=VARCHAR}),'%')
+				</if>
+				<if test="pestQuery.family !=null and pestQuery.family != ''">
+					AND name LIKE CONCAT(CONCAT('%',#{pestQuery.family,
+					jdbcType=VARCHAR}),'%')
+				</if>
+				<if test="pestQuery.category !=null and pestQuery.category != ''">
+					AND name LIKE CONCAT(CONCAT('%',#{pestQuery.category,
+					jdbcType=VARCHAR}),'%')
+				</if>
+			</if>
+		</where>
+		LIMIT #{startNo},#{pageSize}
+	</select>
+
+	<select id="queryCount" resultType="Integer">
+		SELECT COUNT(*) FROM pest
+		<where>
+			<if test="query!=null">
+				<if test="query.name !=null and query.name != ''">
+					name LIKE CONCAT(CONCAT('%',#{query.name,
+					jdbcType=VARCHAR}),'%')
+				</if>
+				<if test="query.family !=null and query.family != ''">
+					AND name LIKE CONCAT(CONCAT('%',#{query.family,
+					jdbcType=VARCHAR}),'%')
+				</if>
+				<if test="query.category !=null and query.category != ''">
+					AND name LIKE CONCAT(CONCAT('%',#{query.category,
+					jdbcType=VARCHAR}),'%')
+				</if>
+			</if>
+		</where>
 	</select>
 
 </mapper>

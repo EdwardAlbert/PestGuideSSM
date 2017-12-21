@@ -1,7 +1,10 @@
 package bupt.zby.service;
 
+import bupt.zby.entity.PageBean;
 import bupt.zby.entity.Pest;
+import bupt.zby.entity.PestQuery;
 
 public interface PestService {
-	public Pest selectPestById(int id);
+	public Pest queryPestById(int id);
+	public PageBean queryPageBean(int curPage, int pageSize, PestQuery query);
 }
